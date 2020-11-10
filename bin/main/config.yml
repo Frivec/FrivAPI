@@ -1,0 +1,21 @@
+mySQL:
+  
+  enable: false
+  
+  useHikari: false
+  hikariPools: 5
+  
+  host: "localhost"
+  user: "user"
+  database: "database"
+  password: "password"
+  port: 3306
+  
+redis:
+
+  enable: false
+  
+  host: "localhost"
+  clientName: "client"
+  password: "password"
+  port: 6379

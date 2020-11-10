@@ -1,0 +1,78 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+description 'API'
+
+group = 'fr.frivec'
+version = '1.0'
+
+sourceCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    extraLibs
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+repositories {
+
+	mavenLocal()
+	mavenCentral()
+		
+	maven {
+        	
+       	url "https://oss.sonatype.org/content/repositories/snapshots"
+    	
+    }
+	
+	maven {
+    	url 'https://repo.destroystokyo.com/repository/maven-public/'
+	}
+	
+	maven {
+        url 'https://jitpack.io'
+	}
+	
+    maven { 
+    
+    	url "http://repo.dmulloy2.net/nexus/repository/public/" 
+    
+    }
+    
+    maven{
+    
+    	url "https://repo.inventivetalent.org/content/groups/public/"
+    
+    }
+	
+}
+
+dependencies {
+	
+	compileOnly group: 'net.md-5', name: 'bungeecord-api', version: '1.15-SNAPSHOT'
+	compileOnly "org.spigotmc:spigot:1.16.4-R0.1-SNAPSHOT"
+    compileOnly group: 'com.destroystokyo.paper', name: 'paper-api', version: '1.16.4-R0.1-SNAPSHOT'
+    //compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.4.0";
+	
+    //compile 'com.github.Trigary:AdvancementCreator:v2.0'
+	compile 'com.zaxxer:HikariCP:3.4.2'
+	compile 'org.redisson:redisson:3.12.1'
+   	compile 'com.github.jsurfer:jsurfer-jsonsimple:1.4.3'
+   	compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+	
+}
+
+jar {
+    jar.setDestinationDir(new File("C:/Users/antoi/Desktop/Developpement/Minecraft/Serveurs/Serveurs_Spigot/Serveur_1.16.2/plugins/"))
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+jar.setArchiveName("FrivAPI.jar")

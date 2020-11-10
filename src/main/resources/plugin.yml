@@ -1,0 +1,6 @@
+name: FrivAPI
+version: 1.0
+author: Frivec
+main: fr.frivec.spigot.API
+api-version: 1.13
+loadbefore: [SkyFly, Xana]
