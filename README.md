@@ -51,7 +51,7 @@ Can be use for minigames with teams as an example.
 
 Pattern for your scoreboards. Needed to use the ServerScoreboard class
 
-### Code example :
+#### Code example :
 
 	private void testPattern() {
 		
@@ -72,7 +72,7 @@ Pattern for your scoreboards. Needed to use the ServerScoreboard class
 Create a scoreboard using Bukkit API. Needs an instance of ScoreboardPattern.
 **You have to use it if you use the glowing effect !**
 
-### Code example :
+#### Code example :
 
 	private void setScoreboard(final Player player, final ScoreboardPattern pattern) {
 		
@@ -106,7 +106,7 @@ Create a scoreboard using packets. Needs an instance of ScoreboardPattern.
 
 The original work belong to Zyuiop(https://gist.github.com/zyuiop/8fcf2ca47794b92d7caa). Updated by Frivec.
 
-### Code example :
+#### Code example :
 
 	private void setScoreboard(final Player player, final ScoreboardPattern pattern) {
 		
@@ -136,12 +136,12 @@ The original work belong to Zyuiop(https://gist.github.com/zyuiop/8fcf2ca47794b9
 		
 	}
 	
-## ScoreboardAlternate :
+### ScoreboardAlternate :
 
 Create a timer to change the scoreboard of a player every x seconds.
 **Works only with ScoreboardSign at this moment.
 
-### Code Example :
+#### Code Example :
 	
 	private void createAlternateScoreboard(final Player player) {
 		
@@ -160,5 +160,35 @@ Create a timer to change the scoreboard of a player every x seconds.
 		alternate.removePlayer(player);
 		
 	}
+
+### ItemCreator :
+
+Create a custom ItemStack quickly ! Create a Skull, a leather armor or a more common item.
+
+#### Code example :
+
+	private void createItem() {
 	
+		//Create a diamond sword with sharpness 5 named Test
+		final ItemStack itemStack = new ItemCreator(Material.DIAMOND_SWORD, 1) //Set the material of the item and the amount of item you want
+						.setDisplayName("§aTest") //Set the name of the item
+						.setLores(Arrays.asList("First line", "Second Line")) //Set the lores of the item (texte below the name)
+						.addEnchantment(Enchantment.DAMAGE_ALL, 4) //Add Enchantment to the item
+						.addItemFlag(ItemFlag.HIDE_ENCHANTS) //Add an itemFlag to the item
+						.build(); //Convert Itemcreator to Itemstack
+		
+		//Get the notch's head
+		final ItemStack notchSkull = new ItemCreator(Material.PLAYER_HEAD, 1)
+						.skull("Notch") //Set the owner of the head. Works with UUID
+						.setDisplayName("Notch's head")
+						.build();
+						
+		//Get a blue leather chestplate
+		final ItemStack leatherChestplate = new ItemCreator(Material.LEATHER_CHESTPLATE, 1)
+							.leatherArmor(Material.LEATHER_CHESTPLATE, Color.BLUE) //Set the material of the leather armor and the color
+							.setDisplayName("Nice blue")
+							.build();
+	
+	}
+
 **This readme file in currently in construction. Please wait for the end.
